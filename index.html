@@ -88,11 +88,46 @@
         font-size: 1.2em;
       }
 
-      /* Adjusting position of "Add a Post" button */
+      .post-time {
+        font-size: 0.9em;
+        color: #6c757d;
+        margin-left: 10px;
+      }
+
       .add-post-section {
         display: flex;
         justify-content: center;
         margin-top: 20px;
+      }
+
+      .reaction-emojis {
+        display: none;
+        position: absolute;
+        bottom: 40px;
+        right: 0;
+        background: #fff6f6;
+        padding: 5px 10px;
+        border-radius: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        white-space: nowrap;
+      }
+
+      .reaction-emojis .emoji {
+        font-size: 24px;
+        cursor: pointer;
+        margin: 0 5px;
+        transition: transform 0.2s;
+      }
+
+      .reaction-emojis .emoji:hover {
+        transform: scale(1.2);
+      }
+
+      .reaction-btn {
+        font-size: 16px;
+        color: black;
+        opacity: 0.6;
+        text-decoration: none;
       }
     </style>
   </head>
@@ -181,16 +216,7 @@
     </div>
 
     <main class="p-3">
-      <div id="postContainer" class="p-3 bg-white rounded-lg shadow-sm">
-        <section class="post-section">
-          <i class="fas fa-trash-alt trash-icon" onclick="deletePost(this)"></i>
-          <h2 class="post-title">Congratulations</h2>
-          <p class="post-content">
-            The DOTA CCIS TEAM GOT THE SANGKA FINALS In 2024.
-          </p>
-          <img src="Photos/DOTA CCIS.jpg" alt="" class="img-fluid" />
-        </section>
-      </div>
+      <div id="postContainer" class="p-3 bg-white rounded-lg shadow-sm"></div>
     </main>
 
     <!-- Bootstrap & JavaScript -->
@@ -219,6 +245,11 @@
         const imagePreview = document.getElementById("imagePreview");
         const imageSrc =
           imagePreview.style.display !== "none" ? imagePreview.src : null;
+        const now = new Date();
+        const formattedDate = now.toLocaleString("en-US", {
+          dateStyle: "medium",
+          timeStyle: "short",
+        });
 
         if (title && content) {
           const newPost = document.createElement("section");
@@ -228,15 +259,35 @@
             <i class="fas fa-trash-alt trash-icon" onclick="deletePost(this)"></i>
             <h2 class="post-title">${title}</h2>
             <p class="post-content">${content}</p>
+            <p class="post-time">${formattedDate}</p>
             ${imageSrc ? `<img src="${imageSrc}" class="img-fluid" />` : ""}
-            <div class="d-flex align-items-center mt-2">
-  <i class="fas text-primary mr-2" onclick="likePost(this)"></i>
-  <span class="like-count">0</span> Likes
-</div>
-
+            <div class="card-body text-secondary">
+              <p class="card-text cardtext">
+                <span class="preview-text">${content}</span>
+                <span class="more-text" style="display: none">More text...</span>
+                <button class="toggle-btn btn btn-link p-0">...See More</button>
+              </p>
+            </div>
           `;
 
           document.getElementById("postContainer").appendChild(newPost);
+
+          // Add event listener for the "See More" button
+          const toggleBtn = newPost.querySelector(".toggle-btn");
+          const moreText = newPost.querySelector(".more-text");
+          const previewText = newPost.querySelector(".preview-text");
+
+          toggleBtn.addEventListener("click", function () {
+            if (moreText.style.display === "none") {
+              moreText.style.display = "inline";
+              previewText.style.display = "inline";
+              toggleBtn.textContent = "See Short";
+            } else {
+              moreText.style.display = "none";
+              previewText.style.display = "inline";
+              toggleBtn.textContent = "See More";
+            }
+          });
 
           // Show success message
           const successMessage = document.getElementById("successMessage");
@@ -260,6 +311,35 @@
         const post = trashIcon.closest(".post-section");
         post.remove();
       }
+
+      // Function to handle like functionality
+      function likePost(likeIcon) {
+        const likeCountSpan = likeIcon.nextElementSibling;
+        let currentCount = parseInt(likeCountSpan.textContent);
+        currentCount++;
+        likeCountSpan.textContent = currentCount;
+      }
+
+      // See More functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".toggle-btn").forEach(function (toggleBtn) {
+          toggleBtn.addEventListener("click", function () {
+            const card = toggleBtn.closest(".post-section");
+            const moreText = card.querySelector(".more-text");
+            const previewText = card.querySelector(".preview-text");
+
+            if (moreText.style.display === "none") {
+              moreText.style.display = "inline";
+              previewText.style.display = "inline";
+              toggleBtn.textContent = "See Short";
+            } else {
+              moreText.style.display = "none";
+              previewText.style.display = "inline";
+              toggleBtn.textContent = "See More";
+            }
+          });
+        });
+      });
     </script>
   </body>
 </html>
