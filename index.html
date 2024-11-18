@@ -189,13 +189,6 @@
             The DOTA CCIS TEAM GOT THE SANGKA FINALS In 2024.
           </p>
           <img src="Photos/DOTA CCIS.jpg" alt="" class="img-fluid" />
-          <div class="d-flex align-items-center mt-2">
-            <i
-              class="fas fa-thumbs-up like-icon text-primary mr-2"
-              onclick="likePost(this)"
-            ></i>
-            <span class="like-count">0</span> likes
-          </div>
         </section>
       </div>
     </main>
@@ -205,14 +198,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      // Like post functionality
-      function likePost(likeIcon) {
-        const likeCount = likeIcon.nextElementSibling;
-        let count = parseInt(likeCount.textContent);
-        count++;
-        likeCount.textContent = count;
-      }
-
       // Preview selected image
       document
         .getElementById("postImage")
@@ -245,9 +230,10 @@
             <p class="post-content">${content}</p>
             ${imageSrc ? `<img src="${imageSrc}" class="img-fluid" />` : ""}
             <div class="d-flex align-items-center mt-2">
-              <i class="fas fa-thumbs-up like-icon text-primary mr-2" onclick="likePost(this)"></i>
-              <span class="like-count">0</span> likes
-            </div>
+  <i class="fas text-primary mr-2" onclick="likePost(this)"></i>
+  <span class="like-count">0</span> Likes
+</div>
+
           `;
 
           document.getElementById("postContainer").appendChild(newPost);
