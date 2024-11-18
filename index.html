@@ -19,6 +19,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <style>
       body {
@@ -95,7 +99,8 @@
   <body class="bg-light">
     <!-- Header -->
     <header
-      class="bg-warning text-white p-3 d-flex align-items-center justify-content-between"
+      class="text-white p-3 d-flex align-items-center justify-content-between"
+      style="background-color: #ed5500"
     >
       <div class="d-flex align-items-center">
         <img
@@ -113,8 +118,12 @@
       <div>
         <a href="Login/Login.html" class="text-white">Logout</a>
       </div>
-      <div class="d-none d-md-block ml-3">
-        <input class="form-control" placeholder="Search" type="text" />
+      <div class="d-none d-md-block ml-3l">
+        <input
+          class="form-control rounded-pill extended-search"
+          placeholder="Search"
+          type="text"
+        />
       </div>
     </header>
 
@@ -171,10 +180,10 @@
       </div>
     </div>
 
-    <!-- Posts -->
+    <!-- Posts 
     <main class="p-3">
       <div id="postContainer" class="p-3 bg-white rounded-lg shadow-sm">
-        <!-- Placeholder post -->
+        <!-- Placeholder post 
         <section class="post-section">
           <i class="fas fa-trash-alt trash-icon" onclick="deletePost(this)"></i>
           <h2 class="post-title">Congratulations</h2>
@@ -191,31 +200,7 @@
           </div>
         </section>
       </div>
-    </main>
-
-    <!-- Footer -->
-    <footer
-      class="bg-white p-2 fixed-bottom border-top d-flex justify-content-around"
-    >
-      <div class="text-center">
-        <i class="fas fa-newspaper text-warning"></i>
-        <p class="small mb-0">News</p>
-      </div>
-      <div class="text-center">
-        <a href="Announcement.html" style="text-decoration: none; color: black">
-          <i class="fas fa-bullhorn text-muted"></i>
-          <p class="small mb-0">Announcement</p>
-        </a>
-      </div>
-      <div class="text-center">
-        <i class="fas fa-search text-muted"></i>
-        <p class="small mb-0">Search</p>
-      </div>
-      <div class="text-center">
-        <i class="fas fa-cog text-muted"></i>
-        <p class="small mb-0">Settings</p>
-      </div>
-    </footer>
+    </main>-->
 
     <!-- Bootstrap & JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
