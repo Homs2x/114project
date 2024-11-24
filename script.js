@@ -159,3 +159,42 @@ function updateHiddenContent() {
 document.getElementById("postContent").addEventListener("focus", function () {
   document.execCommand("defaultParagraphSeparator", false, "p");
 });
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = document.querySelectorAll(".announcement-card");
+
+  cards.forEach((card) => {
+    card.addEventListener("click", function () {
+      // Logic to populate modal (optional)
+      const modal = new bootstrap.Modal(
+        document.getElementById("viewAnnouncementModal")
+      );
+      modal.show();
+    });
+  });
+});
+// script.js
+document.addEventListener("DOMContentLoaded", (event) => {
+  // Existing modal code...
+
+  // Handle delete button click
+  document.querySelectorAll(".delete-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      const announcementId = this.getAttribute("data-id");
+      if (confirm("Are you sure you want to delete this announcement?")) {
+        fetch("delete_announcement.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: "id=" + encodeURIComponent(announcementId),
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            alert(data);
+            location.reload();
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+    });
+  });
+});

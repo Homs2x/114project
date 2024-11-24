@@ -1,3 +1,17 @@
+#viewAnnouncementModal .modal-header {
+  background-color: #ff9900;
+  color: white;
+}
+#viewAnnouncementModal .modal-body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+#viewAnnouncementModal .modal-footer .btn-secondary {
+  background-color: #ff9900;
+  border-color: #ff9900;
+  color: white;
+}
+
 body {
     font-family: "Roboto", sans-serif;
   }
@@ -17,7 +31,17 @@ body {
   .like-icon {
     cursor: pointer;
   }
-  
+  .modal-body {
+    max-height: 70vh; /* Set max height as 70% of the viewport */
+    overflow-y: auto; /* Enable scrolling for overflowing content */
+    word-wrap: break-word; /* Break long words to avoid horizontal scrolling */
+    white-space: pre-wrap; /* Ensure text wraps nicely */
+}
+.modal-content {
+  max-height: 90vh; /* The modal will not exceed 90% of the viewport height */
+  overflow: hidden; /* Prevent unnecessary overflow */
+}
+
   #successMessage {
     display: none;
     position: fixed;
@@ -102,4 +126,8 @@ body {
     opacity: 0.6;
     text-decoration: none;
   }
-  
+  .card {
+    overflow: hidden;
+    border-radius: 35px; /* Matches your card's existing style */
+    background-color: #b4b4b4;
+}
