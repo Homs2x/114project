@@ -69,7 +69,7 @@
     <div class="modal-dialog">
         <div class="modal-content p-3">
             <h2 class="text-center mb-4">Edit Announcement</h2>
-            <form id="editAnnouncementForm" method="post">
+            <form id="editAnnouncementForm" method="post" action="edit_announcement.php">
                 <!-- Hidden field for ID -->
                 <input type="hidden" name="id" id="editAnnouncementId" />
 
@@ -286,18 +286,28 @@ document.querySelectorAll('.announcement-card').forEach(card => {
 <nav id="bottomNavbar" class="navbar fixed-bottom navbar-light bg-light">
 <div id="nav-announcement" class="col-6">
             <a class="nav-link btn-nav" href="/l">
-              <i class="fas fa-newspaper nav-link btn-nav"" ></i>
-              <span >News</span>
+              <i class="fas fa-newspaper nav-link btn-nav"" style="font-size: 24px; "></i>
+              <span>News</span>
             </a>
+            
           </div>
           <div id="nav-announcement" class="col-6">
-            <a class="nav-link btn-nav" href="announcement.php">
-              <i class="fas fa-bullhorn" style="font-size: 24px; color:black;"></i>
+            <a class="nav-link btn-nav" href="poll.php">
+            <i class="fas fa-poll"  style="font-size: 24px" ></i>
+              <span>View Polls</span>
+            </a>
+          </div>
+          
+          <div id="nav-announcement" class="col-12">
+            <a class="nav-link btn-nav" href="">
+              <i class="fas fa-bullhorn" style="color:black; font-size: 24px"></i>
               <span style="color:black;">Announcement</span>
             </a>
           </div>
+          
+          
     </div>
-     </div>
+    
 </nav>
 
 <!-- JavaScript -->

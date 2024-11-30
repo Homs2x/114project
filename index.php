@@ -19,25 +19,6 @@ $successMessage = isset($_GET['success']) ? htmlspecialchars($_GET['success']) :
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="bg-light">
-<!-- Success Notification Modal -->
-<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-success text-white">
-                <h5 class="modal-title" id="successModalLabel">Notification</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <?php echo $successMessage; ?>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Header -->
 <header class="text-white p-3 d-flex align-items-center justify-content-between" style="background-color: #ed5500">
@@ -61,9 +42,6 @@ $successMessage = isset($_GET['success']) ? htmlspecialchars($_GET['success']) :
     <div class="container">
         <button id="addPostBtn" class="btn btn-primary mr-2" data-toggle="modal" data-target="#postModal" style="background-color: #fd7e14;  border-color: #fd7e14;  color: #fff;">
             Create a News
-        </button>
-        <button id="addPollBtn" class="btn btn-primary" data-toggle="modal" data-target="#pollModal" style="background-color: #fd7e14;  border-color: #fd7e14;  color: #fff;">
-            <i class="fas fa-poll"></i> Poll
         </button>
     </div>
 </section>
@@ -92,45 +70,7 @@ $successMessage = isset($_GET['success']) ? htmlspecialchars($_GET['success']) :
     </div>
 </form>
 
-<!-- Modal for Adding a Poll -->
-<form action="add_poll.php" method="post">
-    <div id="pollModal" class="modal fade" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content p-3">
-                <h2 class="text-center mb-4">Create a Poll</h2>
-                <input name="poll_question" type="text" placeholder="Enter poll question" class="form-control mb-3" />
-                <div id="pollOptions" class="mb-3">
-                    <input name="options[]" type="text" placeholder="Option 1" class="form-control mb-2" />
-                </div>
-                <button type="button" class="btn btn-success mb-3" onclick="addOption()" style="background-color: #fd7e14;  border-color: #fd7e14;  color: #fff;">+</button>
-                <div class="text-right">
-                    <button id="closePollModalBtn" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button id="createPollBtn" class="btn btn-primary" type="submit" style="background-color: #fd7e14;  border-color: #fd7e14;  color: #fff;">Create Poll</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
 <!-- JavaScript for Dynamic Poll Options and Reset on Modal Close -->
-<script>
-    function addOption() {
-        var pollOptions = document.getElementById('pollOptions');
-        var newOptionIndex = pollOptions.children.length + 1;
-        var newOption = document.createElement('input');
-        newOption.type = 'text';
-        newOption.name = 'options[]';
-        newOption.placeholder = 'Option ' + newOptionIndex;
-        newOption.className = 'form-control mb-2';
-        pollOptions.appendChild(newOption);
-    }
-
-    // Reset poll options to one input field when the modal is hidden
-    $('#pollModal').on('hidden.bs.modal', function () {
-        var pollOptions = document.getElementById('pollOptions');
-        pollOptions.innerHTML = '<input name="options[]" type="text" placeholder="Option 1" class="form-control mb-2" />';
-    });
-</script>
 <script>
     $(document).ready(function () {
         // Trigger modal if success message exists
@@ -140,6 +80,7 @@ $successMessage = isset($_GET['success']) ? htmlspecialchars($_GET['success']) :
         <?php endif; ?>
     });
 </script>
+
 
 
 <h3 class="mb-4" style="margin-left:50px;">The News</h3> 
@@ -269,15 +210,24 @@ $successMessage = isset($_GET['success']) ? htmlspecialchars($_GET['success']) :
               <i class="fas fa-newspaper nav-link btn-nav"" style="font-size: 24px; color:black;"></i>
               <span style="color:black;">News</span>
             </a>
+            
           </div>
           <div id="nav-announcement" class="col-6">
+            <a class="nav-link btn-nav" href="poll.php">
+            <i class="fas fa-poll"  style="font-size: 24px" ></i>
+              <span>View Polls</span>
+            </a>
+          </div>
+           <div id="nav-announcement" class="col-12">
             <a class="nav-link btn-nav" href="announcement.php">
               <i class="fas fa-bullhorn" style="font-size: 24px"></i>
               <span>Announcement</span>
             </a>
           </div>
+          
+          
     </div>
-     </div>
+    
 </nav>
 <!-- JavaScript -->
  <script>

@@ -15,6 +15,8 @@ if (isset($_POST['id']) && isset($_POST['title']) && isset($_POST['content'])) {
 
     if (mysqli_query($conn, $sql)) {
         echo "Announcement updated successfully.";
+        header("Location: announcement.php"); // Redirect back to the index page
+        exit();
     } else {
         echo "Error updating announcement: " . mysqli_error($conn);
     }
