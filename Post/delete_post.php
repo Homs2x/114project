@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             unlink($image);
         }
         echo "Post and associated image deleted successfully!";
-        header("Location: index.php"); // Redirect back to the index page
+        header("Location: ../index.php"); // Redirect back to the index page
         exit();
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);

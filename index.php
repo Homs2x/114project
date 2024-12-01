@@ -47,7 +47,7 @@ $successMessage = isset($_GET['success']) ? htmlspecialchars($_GET['success']) :
 </section>
 
 <!-- Modal for Adding a Post -->
-<form action="add_post.php" method="post" enctype="multipart/form-data" onsubmit="updateHiddenContent()">
+<form action="Post/add_post.php" method="post" enctype="multipart/form-data" onsubmit="updateHiddenContent()">
     <div id="postModal" class="modal fade" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content p-3">
@@ -120,7 +120,7 @@ $successMessage = isset($_GET['success']) ? htmlspecialchars($_GET['success']) :
                     echo '</div>';
 
                     // Delete post button
-                    echo '<form action="delete_post.php" method="post" class="mb-0">';
+                    echo '<form action="Post/delete_post.php" method="post" class="mb-0">';
                     echo '<input type="hidden" name="post_id" value="' . $row['id'] . '">';
                     echo '<button type="submit" class="btn  btn-sm" style="background-color: #fd7e14;  border-color: #fd7e14;  color: #fff;">';
                     echo '<i class="fas fa-trash-alt"></i>';
@@ -158,7 +158,7 @@ $successMessage = isset($_GET['success']) ? htmlspecialchars($_GET['success']) :
                     echo '<span aria-hidden="true">&times;</span>';
                     echo '</button>';
                     echo '</div>';
-                    echo '<form action="edit_post.php" method="post" enctype="multipart/form-data">';
+                    echo '<form action="Post/edit_post.php" method="post" enctype="multipart/form-data">';
                     echo '<div class="modal-body">';
                     echo '<input type="hidden" name="post_id" value="' . $row['id'] . '">';
                     echo '<div class="form-group">';
@@ -192,42 +192,46 @@ $successMessage = isset($_GET['success']) ? htmlspecialchars($_GET['success']) :
     </div>
 </main>
         <!--News and Announcement-->
-<style>
+        <style>
+    body {
+        padding-bottom: 60px; /* Space for the fixed navbar */
+    }
+    #bottomNavbar {
+        height: 60px; /* Adjust height as needed */
+    }
     #bottomNavbar .nav-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #6c757d; 
-  text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #6c757d;
+        text-decoration: none;
+        padding: 0;
+    }
+    #bottomNavbar .col-6, #bottomNavbar .col-12 {
+        padding: 0;
     }
 </style>
 
-<!-- Navigation Bar -->
 <nav id="bottomNavbar" class="navbar fixed-bottom navbar-light bg-light">
-<div id="nav-announcement" class="col-6">
-            <a class="nav-link btn-nav" href="/l">
-              <i class="fas fa-newspaper nav-link btn-nav"" style="font-size: 24px; color:black;"></i>
-              <span style="color:black;">News</span>
-            </a>
-            
-          </div>
-          <div id="nav-announcement" class="col-6">
-            <a class="nav-link btn-nav" href="poll.php">
-            <i class="fas fa-poll"  style="font-size: 24px" ></i>
-              <span>View Polls</span>
-            </a>
-          </div>
-           <div id="nav-announcement" class="col-12">
-            <a class="nav-link btn-nav" href="announcement.php">
-              <i class="fas fa-bullhorn" style="font-size: 24px"></i>
-              <span>Announcement</span>
-            </a>
-          </div>
-          
-          
+    <div id="nav-announcement" class="col-2">
+        <a class="nav-link btn-nav" href="">
+            <i class="fas fa-newspaper nav-link btn-nav" style="font-size: 24px; color:black;"></i>
+            <span style="color:black;">News</span>
+        </a>
     </div>
-    
+    <div id="nav-announcement" class="col-2">
+        <a class="nav-link btn-nav" href="Poll/poll.php">
+            <i class="fas fa-poll" style="font-size: 24px;"></i>
+            <span >Polls</span>
+        </a>
+    </div>
+    <div id="nav-announcement" class="col-2">
+        <a class="nav-link btn-nav" href="Announcement/announcement.php">
+            <i class="fas fa-bullhorn" style="font-size: 24px;"></i>
+            <span>Announcement</span>
+        </a>
+    </div>
 </nav>
 <!-- JavaScript -->
  <script>

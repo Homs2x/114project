@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="Photos/CCISLOGO.png" />
+    <link rel="icon" href="../Photos/CCISLOGO.png" />
     <title>CCIS Connect</title>
 
     <!-- Bootstrap CSS -->
@@ -19,17 +19,14 @@
 <!-- Header -->
 <header class="text-white p-3 d-flex align-items-center justify-content-between" style="background-color: #ed5500">
     <div class="d-flex align-items-center">
-        <img src="Photos/CCISLOGO.png" alt="CCIS Logo" height="40" width="40" class="mr-2" />
+        <img src="../Photos/CCISLOGO.png" alt="CCIS Logo" height="40" width="40" class="mr-2" />
         <div>
             <h1 class="h5 mb-0">CCIS CONNECT</h1>
             <small>College of Computing and Information Sciences</small>
         </div>
     </div>
     <div>
-        <a href="Login/Login.html" class="text-white"><button class="btn btn-primary mr-2" style="background-color: #fd7e14; border-color: #fd7e14; color: #fff;">Logout</button></a>
-    </div>
-    <div class="d-none d-md-block ml-3">
-        <input class="form-control rounded-pill extended-search" placeholder="Search" type="text" />
+        <a href="../Login/Login.html" class="text-white"><button class="btn btn-primary mr-2" style="background-color: #fd7e14; border-color: #fd7e14; color: #fff;">Logout</button></a>
     </div>
 </header>
 
@@ -272,6 +269,12 @@ document.querySelectorAll('.announcement-card').forEach(card => {
 
 <!-- News and Announcement -->
 <style>
+    body {
+        padding-bottom: 60px; /* Space for the fixed navbar */
+    }
+    #bottomNavbar {
+        height: 60px; /* Adjust height as needed */
+    }
     #bottomNavbar .nav-link {
         display: flex;
         flex-direction: column;
@@ -279,35 +282,32 @@ document.querySelectorAll('.announcement-card').forEach(card => {
         justify-content: center;
         color: #6c757d;
         text-decoration: none;
+        padding: 0;
+    }
+    #bottomNavbar .col-6, #bottomNavbar .col-12 {
+        padding: 0;
     }
 </style>
 
-<!-- Navigation Bar -->
 <nav id="bottomNavbar" class="navbar fixed-bottom navbar-light bg-light">
-<div id="nav-announcement" class="col-6">
-            <a class="nav-link btn-nav" href="/l">
-              <i class="fas fa-newspaper nav-link btn-nav"" style="font-size: 24px; "></i>
-              <span>News</span>
-            </a>
-            
-          </div>
-          <div id="nav-announcement" class="col-6">
-            <a class="nav-link btn-nav" href="poll.php">
-            <i class="fas fa-poll"  style="font-size: 24px" ></i>
-              <span>View Polls</span>
-            </a>
-          </div>
-          
-          <div id="nav-announcement" class="col-12">
-            <a class="nav-link btn-nav" href="">
-              <i class="fas fa-bullhorn" style="color:black; font-size: 24px"></i>
-              <span style="color:black;">Announcement</span>
-            </a>
-          </div>
-          
-          
+    <div id="nav-announcement" class="col-2">
+        <a class="nav-link btn-nav" href="/l">
+            <i class="fas fa-newspaper nav-link btn-nav" style="font-size: 24px;"></i>
+            <span>News</span>
+        </a>
     </div>
-    
+    <div id="nav-announcement" class="col-2">
+        <a class="nav-link btn-nav" href="../Poll/poll.php">
+            <i class="fas fa-poll" style="font-size: 24px;"></i>
+            <span style="color:black;">Polls</span>
+        </a>
+    </div>
+    <div id="nav-announcement" class="col-2">
+        <a class="nav-link btn-nav" href="../Announcement/announcement.php">
+            <i class="fas fa-bullhorn" style="font-size: 24px;color:black;"></i>
+            <span style="color:black;">Announcement</span>
+        </a>
+    </div>
 </nav>
 
 <!-- JavaScript -->
